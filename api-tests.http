@@ -1,0 +1,82 @@
+### Перевірка роботи сервера
+GET http://localhost:3000/
+
+
+### Створення нового вимірювання
+POST http://localhost:3000/api/air-quality
+Content-Type: application/json
+
+{
+  "city": "Київ",
+  "station": "Центральна станція",
+  "pm25": 18.5,
+  "pm10": 32.7,
+  "no2": 14.2,
+  "temperature": 21,
+  "humidity": 55,
+  "measuredAt": "2026-11-01T10:00:00.000Z",
+  "source": "Демонстраційні дані"
+}
+
+
+### Отримання всіх вимірювань
+GET http://localhost:3000/api/air-quality/6ae86b48b23d07608536923d
+
+
+### Фільтрація за містом
+GET http://localhost:3000/api/air-quality?city=Київ
+
+
+### Фільтрація за станцією
+GET http://localhost:3000/api/air-quality?station=Центральна%20станція
+
+
+### Фільтрація за періодом
+GET http://localhost:3000/api/air-quality?startDate=2026-01-01&endDate=2026-12-31
+
+
+### Отримання одного вимірювання
+GET http://localhost:3000/api/air-quality/6ae86b48b23d07608536923d
+
+
+### Повне оновлення вимірювання
+PUT http://localhost:3000/api/air-quality/6ae86b48b23d07608536923d
+Content-Type: application/json
+
+{
+  "city": "Київ",
+  "station": "Центральна станція",
+  "pm25": 20,
+  "pm10": 35,
+  "no2": 16,
+  "temperature": 22,
+  "humidity": 60,
+  "measuredAt": "2026-11-01T12:00:00.000Z",
+  "source": "Демонстраційні дані"
+}
+
+
+### Часткове оновлення
+PATCH http://localhost:3000/api/air-quality/6ae86b48b23d07608536923d
+Content-Type: application/json
+
+{
+  "pm25": 12.5
+}
+
+
+### Видалення вимірювання
+DELETE http://localhost:3000/api/air-quality/6ae86b48b23d07608536923d
+
+
+### Перевірка помилки валідації
+POST http://localhost:3000/api/air-quality
+Content-Type: application/json
+
+{
+  "city": "Київ"
+}
+
+
+### Перевірка відсутнього запису
+GET http://localhost:3000/api/air-quality/507f1f77bcf86cd799439011
